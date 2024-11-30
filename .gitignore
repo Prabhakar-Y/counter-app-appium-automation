@@ -1,0 +1,28 @@
+# Node.js dependencies
+/node_modules/
+
+# WebDriverIO specific directories
+/.vscode/                  
+/wdio-*                     
+/error-shots/              
+/video-reports/           
+/coverage/                
+/logs/                     
+/.history/                 
+
+#Report files
+/reports/                  
+mochawesome-report/                  
+*.json                    
+
+# OS-specific files
+.DS_Store                  
+Thumbs.db                  
+
+# IDE/editor settings
+.idea/                               
+*.vscode/                  
+
+# Configuration files
+.env                       
+*.env                      

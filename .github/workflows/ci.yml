@@ -1,0 +1,73 @@
+name: WebdriverIO Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  install_dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14.x'
+
+      - name: Install dependencies
+        run: |
+          npm install
+
+  run_tests:
+    runs-on: ubuntu-latest
+    needs: install_dependencies
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14.x'
+
+      - name: Install dependencies
+        run: |
+          npm install
+
+      # Run all tests (functional and edge)
+      - name: Run All Tests
+        run: |
+          npm test
+        continue-on-error: true
+
+      # Run functional tests only
+      - name: Run Functional Tests
+        run: |
+          npm run test:functional
+        continue-on-error: true
+
+      # Run edge case tests only
+      - name: Run Edge Case Tests
+        run: |
+          npm run test:edge
+        continue-on-error: true
+
+      - name: Merge MochaAwesome Report JSON files
+        run: |
+          npx mochawesome-merge ./mochawesome-report/*.json -o ./mochawesome-report/merged-results.json
+
+      - name: Generate HTML Report
+        run: |
+          npx mochawesome-report-generator ./mochawesome-report/merged-results.json -o ./mochawesome-report
+
+      - name: Upload MochaAwesome Report to artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: mochawesome-report
+          path: mochawesome-report 
