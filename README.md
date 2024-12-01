@@ -44,29 +44,32 @@ This automation suite is designed to validate the following:
 
 ---
 
-## **Project Structure**
+# Project Directory Structure
+
+```plaintext
 project-root/
 │
 ├── build/                      
 │   └── .apk                    # APK file for the Android app under test
-│ 
-│── src/
-│   └── locators/               # Locators file
-│       └── Locators.js  
-│   └── pages/                  # Page Object Model (POM) files
-│      └── CalendarPage.js      
-│      └── CounterPage.js       
-│ 
-│    └── tests/                 # Test files
-│         └── CalendarTests.js  
-│         └── CounterTests.js   
 │
-│    └── utils/                 # Utility functions and base classes
+├── src/
+│   ├── locators/               # Locators file
+│   │   └── Locators.js  
+│   │
+│   ├── pages/                  # Page Object Model (POM) files
+│   │   ├── CalendarPage.js      
+│   │   └── CounterPage.js       
+│   │
+│   ├── tests/                  # Test files
+│   │   ├── CalendarTests.js  
+│   │   └── CounterTests.js   
+│   │
+│   └── utils/                  # Utility functions and base classes
 │       └── BasePage.js         
 │
 ├── package.json                # Project dependencies, scripts, and configurations
 ├── README.md                   
-└── .gitignore                  
+├── .gitignore                  
 └── wdio.android.conf           # WebDriverIO configuration for Android (desired capabilities)
 
 
