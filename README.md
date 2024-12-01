@@ -71,7 +71,7 @@ project-root/
 ├── README.md                   
 ├── .gitignore                  
 └── wdio.android.conf           # WebDriverIO configuration for Android (desired capabilities)
-
+```
 
 
 ## **Setup Instructions**
